@@ -49,8 +49,9 @@ class Server:
         Return:
             list of lists containing required data from the dataset
         """
-        assert isinstance(page, int) and isinstance(page_size, int), "Page and page_size must be integers."
-
+        assert type(page) is int and page > 0
+        assert type(page_size) is int and page_size > 0
+        
         dataset = self.dataset()
         data_length = len(dataset)
         try:
@@ -58,3 +59,4 @@ class Server:
             return dataset[index[0]:index[1]]
         except IndexError:
             return []
+        
